@@ -4,12 +4,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 import modeloPersona.Alumno;
+import modeloPersona.Asistente;
 import modeloPersona.Ayudante;
+import modeloPersona.Coordinador;
 import modeloPersona.Empleado;
+import modeloPersona.Jefe;
+import modeloPersona.Profesor;
 import modeloPersona.Visitante;
 
 public class Menu {
-	int opcion,subOpcion,terOpcion,subParaAlumno;
+	int opcion,subOpcion,terOpcion,subParaAlumno,subParaEmpelados,subParaVisitantes;
 	
 	List <Alumno> listaAlumnos = new LinkedList<Alumno>();
 	List <Empleado> listaEmpleados = new LinkedList<Empleado>();
@@ -17,6 +21,8 @@ public class Menu {
 	
 	EntradaTeclado teclado = new EntradaTeclado();
 	OperacionesAlumno oper = new OperacionesAlumno();
+	OperacionesEmpleado operE = new OperacionesEmpleado();
+	OperacionesVisitante operV = new OperacionesVisitante();
 	
 	public void menu(){
 		do {
@@ -29,57 +35,42 @@ public class Menu {
 			    System.out.println("Escribe el nombre de tu archivo a cargar");
 			    //String archivo = op.leeCadena();
 			    //listaAlumnos = op.cargaListaSerializada(archivo);
-		 	}else if( opcion == 1 ){
+		 	}else if( opcion == 1 ){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registrar alumnos 
 		 		do{
 			 		subOpciones();
 			 		System.out.println("Introduce la opcion: ");
 					subOpcion = teclado.lecturaEntero();
 					System.out.println("Opcion seleccionada : " + subOpcion );
 					
-					if(subOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro de alumnos 
+					if(subOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Sub menu de los tipos de alumnos 
 							subOpcionesAlumno();
 							System.out.println("Introduce la opcion: ");
 							subParaAlumno = teclado.lecturaEntero();
-							System.out.println("Opcion seleccionada : " + subOpcion );
-										if(subParaAlumno==1) {
+							System.out.println("Opcion seleccionada : " + subParaAlumno );
+										if(subParaAlumno==1) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Alumnos 
 											registroAlumnos();											
-										}else if(subParaAlumno==2){
+										}else if(subParaAlumno==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
 											registroAlumnosQueSonAyudantes();											
 										}
 								
 						
 					}else if(subOpcion==2){
-						Empleado nuevo = new Empleado();
-						
-				    	System.out.println("Registro de un nuevo alumno");
-				    	System.out.println("Introduce la matricula");
-				    	//nuevo.setMatricula(teclado.lecturaPalabra());
-				    	System.out.println("Introduce el nombre ");
-				    	nuevo.setNombre(teclado.lecturaPalabra());
-				    	System.out.println("Introduce el genero ");
-				    	nuevo.setGenero(teclado.lecturaPalabra());
-				    	System.out.println("Introduce el Edad ");
-				    	nuevo.setEdad(teclado.lecturaEntero());
-				    	System.out.println("Introduce el Carrera ");
-				    	//nuevo.setCarrera(teclado.lecturaPalabra());
-				       
-				       //oper.registrar(listaAlumnos,nuevo);
+						subMenuEmpleado();
+						System.out.println("Introduce la opcion: ");
+						subParaEmpelados = teclado.lecturaEntero();
+						System.out.println("Opcion seleccionada : " + subParaEmpelados );
+									if(subParaEmpelados==1) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Alumnos 
+										registroEmpeladosQueSonJefes();											
+									}else if(subParaEmpelados==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
+										registroEmpeladosQueSonCoordinadores();											
+									}else if(subParaEmpelados==3){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
+										registroEmpeladosQueSonProfesores();
+									}else if(subParaEmpelados==4){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
+										registroEmpeladosQueSonAsistente();
+									}
+									
 					}else if(subOpcion==3){
-						Alumno nuevo = new Alumno();
 						
-				    	System.out.println("Registro de un nuevo alumno");
-				    	System.out.println("Introduce la matricula");
-				    	nuevo.setMatricula(teclado.lecturaPalabra());
-				    	System.out.println("Introduce el nombre ");
-				    	nuevo.setNombre(teclado.lecturaPalabra());
-				    	System.out.println("Introduce el genero ");
-				    	nuevo.setGenero(teclado.lecturaPalabra());
-				    	System.out.println("Introduce el Edad ");
-				    	nuevo.setEdad(teclado.lecturaEntero());
-				    	System.out.println("Introduce el Carrera ");
-				    	nuevo.setCarrera(teclado.lecturaPalabra());
-				       
-				       //oper.registrar(listaAlumnos,nuevo);
 					}
 		 		}while(subOpcion!=4);
 		    }else if (opcion==2){
@@ -136,10 +127,17 @@ public class Menu {
 	}
 	
 	public void subOpcionesAlumno(){
-		System.out.println("Tipos de alumno");
+		System.out.println("TIPOS DE ALUMNOS ");
 		System.out.println("1. Alumno");
 		System.out.println("2. Ayudante");
 		
+	}
+	public void subMenuEmpleado(){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Sub menu del Registro Empleado
+		System.out.println("TIPOS DE EMPLEADO");
+		System.out.println("1. Jefe");
+		System.out.println("2. Coordinador");
+		System.out.println("3. Profesor");
+		System.out.println("4. Asistente");
 	}
 public void registroAlumnos() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Alumnos
 		
@@ -160,9 +158,9 @@ public void registroAlumnos() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
        oper.registrar(listaAlumnos,nuevo);
 		
 	}
-public void registroAlumnosQueSonAyudantes(){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Alumnos
+public void registroAlumnosQueSonAyudantes(){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro ayudantes
 	
-	Ayudante nuevo = new Ayudante();//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudante es una subclase de alumno 
+	Ayudante nuevo = new Ayudante();
 	
 	System.out.println("Registro de un nuevo Ayudante");
 	System.out.println("Introduce la matricula");
@@ -183,6 +181,89 @@ public void registroAlumnosQueSonAyudantes(){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 	
 }
 
+public void registroEmpeladosQueSonJefes() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Jefe
+	
+	Jefe nuevo = new Jefe();
+	
+	System.out.println("Registro de un nuevo Jefe");
+	System.out.println("Introduce El Numero Economico: ");
+	nuevo.setNumEco(teclado.lecturaPalabra());
+	System.out.println("Introduce el Nombre: ");
+	nuevo.setNombre(teclado.lecturaPalabra());
+	System.out.println("Introduce el Genero: ");
+	nuevo.setGenero(teclado.lecturaPalabra());
+	System.out.println("Introduce el Edad: ");
+	nuevo.setEdad(teclado.lecturaEntero());
+	//atributos unico de Jefe
+	System.out.println("Introduce el Cargo de este Jefe: ");
+	nuevo.setCargo(teclado.lecturaPalabra());
+	
+	operE.registrar(listaEmpleados, nuevo);
+		
+	}
+
+public void registroEmpeladosQueSonCoordinadores() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro coordinador 
+	
+	Coordinador nuevo = new Coordinador();
+	
+	System.out.println("Registro de un nuevo Coordinador");
+	System.out.println("Introduce El Numero Economico: ");
+	nuevo.setNumEco(teclado.lecturaPalabra());
+	System.out.println("Introduce el Nombre: ");
+	nuevo.setNombre(teclado.lecturaPalabra());
+	System.out.println("Introduce el Genero: ");
+	nuevo.setGenero(teclado.lecturaPalabra());
+	System.out.println("Introduce el Edad: ");
+	nuevo.setEdad(teclado.lecturaEntero());
+	//atributos unico de Coordinador
+	System.out.println("Introduce el Area que coordina: ");
+	nuevo.setArea(teclado.lecturaPalabra());
+	
+	operE.registrar(listaEmpleados, nuevo);
+		
+	}
+
+public void registroEmpeladosQueSonProfesores() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Profesor 
+	
+	Profesor nuevo = new Profesor();
+	
+	System.out.println("Registro de un nuevo Profesor");
+	System.out.println("Introduce El Numero Economico: ");
+	nuevo.setNumEco(teclado.lecturaPalabra());
+	System.out.println("Introduce el Nombre: ");
+	nuevo.setNombre(teclado.lecturaPalabra());
+	System.out.println("Introduce el Genero: ");
+	nuevo.setGenero(teclado.lecturaPalabra());
+	System.out.println("Introduce el Edad: ");
+	nuevo.setEdad(teclado.lecturaEntero());
+	//atributos unico de Profesor
+	System.out.println("Introduce Su grado academico: ");
+	nuevo.setGradAcademico(teclado.lecturaPalabra());
+	
+	operE.registrar(listaEmpleados, nuevo);
+		
+	}
+
+public void registroEmpeladosQueSonAsistente() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Asistente 
+	
+	Asistente nuevo = new Asistente();
+	
+	System.out.println("Registro de un nuevo Asistente");
+	System.out.println("Introduce El Numero Economico: ");
+	nuevo.setNumEco(teclado.lecturaPalabra());
+	System.out.println("Introduce el Nombre: ");
+	nuevo.setNombre(teclado.lecturaPalabra());
+	System.out.println("Introduce el Genero: ");
+	nuevo.setGenero(teclado.lecturaPalabra());
+	System.out.println("Introduce el Edad: ");
+	nuevo.setEdad(teclado.lecturaEntero());
+	//atributos unico de Asistente
+	System.out.println("Tiene base True/False : ");
+	nuevo.setBase(teclado.lecturaboleano());
+	
+	operE.registrar(listaEmpleados, nuevo);
+		
+	}
 
 
 

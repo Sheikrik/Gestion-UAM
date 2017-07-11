@@ -18,4 +18,11 @@ public class EntradaTeclado {
         
         return numero;
 	}
+	
+	public boolean lecturaboleano(){
+		scanner = new Scanner(System.in);
+        boolean numero = scanner.nextBoolean();
+        
+        return numero;
+	}
 }

@@ -12,7 +12,7 @@ public abstract class Operaciones<E> {
 		lista.add(elemento);
 		System.out.println("Elemento registrado");
 	}*/
-	protected List<E> lista = new LinkedList<E>();
+	protected List<E> lista = new LinkedList<E>();	
 	
 	public void registrar(List<E> lista,E elemento){
 		lista.add(elemento);

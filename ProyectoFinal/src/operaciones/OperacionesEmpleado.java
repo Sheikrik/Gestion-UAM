@@ -5,6 +5,7 @@ import modeloPersona.Empleado;
 
 
 public class OperacionesEmpleado extends Operaciones<Empleado>{
+	
 	public Empleado buscarNumEco(String numEco){
 		Empleado elemento = null;
 		Iterator<Empleado> iterador = lista.iterator();
