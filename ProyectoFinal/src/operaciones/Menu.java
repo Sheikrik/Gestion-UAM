@@ -48,7 +48,7 @@ public class Menu {
 				    	System.out.println("Introduce el Carrera ");
 				    	nuevo.setCarrera(teclado.lecturaPalabra());
 				       
-				       oper.registrar(listaAlumnos,nuevo);
+				       oper.registrar(nuevo);
 					}else if(subOpcion==2){
 						Empleado nuevo = new Empleado();
 						
@@ -64,7 +64,7 @@ public class Menu {
 				    	System.out.println("Introduce el Carrera ");
 				    	//nuevo.setCarrera(teclado.lecturaPalabra());
 				       
-				       oper.registrar(listaAlumnos,nuevo);
+				       //oper.registrar(listaAlumnos,nuevo);
 					}else if(subOpcion==3){
 						Alumno nuevo = new Alumno();
 						
@@ -80,7 +80,7 @@ public class Menu {
 				    	System.out.println("Introduce el Carrera ");
 				    	nuevo.setCarrera(teclado.lecturaPalabra());
 				       
-				       oper.registrar(listaAlumnos,nuevo);
+				       //oper.registrar(listaAlumnos,nuevo);
 					}
 		 		}while(subOpcion!=4);
 		    }else if (opcion==2){
@@ -101,7 +101,7 @@ public class Menu {
 					if(terOpcion==1){
 						System.out.println("Escribe el nombre del que deseas eliminar");
 				 		String alu = teclado.lecturaPalabra();
-				 		oper.eliminarNombre(listaAlumnos,alu);
+				 		oper.eliminarNombre(alu);
 					}
 			 	}
 		    }else if (opcion==3){  
