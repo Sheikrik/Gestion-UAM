@@ -4,14 +4,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 import modeloPersona.Alumno;
+import modeloPersona.Ayudante;
 import modeloPersona.Empleado;
 import modeloPersona.Visitante;
 
 public class Menu {
-	int opcion,subOpcion,terOpcion;
+	int opcion,subOpcion,terOpcion,subParaAlumno;
+	
 	List <Alumno> listaAlumnos = new LinkedList<Alumno>();
 	List <Empleado> listaEmpleados = new LinkedList<Empleado>();
 	List <Visitante> listaVisitantes = new LinkedList<Visitante>();
+	
 	EntradaTeclado teclado = new EntradaTeclado();
 	OperacionesAlumno oper = new OperacionesAlumno();
 	
@@ -33,22 +36,18 @@ public class Menu {
 					subOpcion = teclado.lecturaEntero();
 					System.out.println("Opcion seleccionada : " + subOpcion );
 					
-					if(subOpcion==1){
-						Alumno nuevo = new Alumno();
+					if(subOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro de alumnos 
+							subOpcionesAlumno();
+							System.out.println("Introduce la opcion: ");
+							subParaAlumno = teclado.lecturaEntero();
+							System.out.println("Opcion seleccionada : " + subOpcion );
+										if(subParaAlumno==1) {
+											registroAlumnos();											
+										}else if(subParaAlumno==2){
+											registroAlumnosQueSonAyudantes();											
+										}
+								
 						
-				    	System.out.println("Registro de un nuevo alumno");
-				    	System.out.println("Introduce la matricula");
-				    	nuevo.setMatricula(teclado.lecturaPalabra());
-				    	System.out.println("Introduce el nombre ");
-				    	nuevo.setNombre(teclado.lecturaPalabra());
-				    	System.out.println("Introduce el genero ");
-				    	nuevo.setGenero(teclado.lecturaPalabra());
-				    	System.out.println("Introduce el Edad ");
-				    	nuevo.setEdad(teclado.lecturaEntero());
-				    	System.out.println("Introduce el Carrera ");
-				    	nuevo.setCarrera(teclado.lecturaPalabra());
-				       
-				       oper.registrar(nuevo);
 					}else if(subOpcion==2){
 						Empleado nuevo = new Empleado();
 						
@@ -116,7 +115,7 @@ public class Menu {
 		}while(opcion!=8);
 	}
 	
-	public void opciones(){
+	public void opciones(){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
 		System.out.println("Menu de opciones");
 		System.out.println("1. Registro");
 		System.out.println("2. Eliminacion");
@@ -135,4 +134,57 @@ public class Menu {
 		System.out.println("3. Visitante");
 		System.out.println("4. Regresar");
 	}
+	
+	public void subOpcionesAlumno(){
+		System.out.println("Tipos de alumno");
+		System.out.println("1. Alumno");
+		System.out.println("2. Ayudante");
+		
+	}
+public void registroAlumnos() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Alumnos
+		
+		Alumno nuevo = new Alumno();
+		
+    	System.out.println("Registro de un nuevo Alumno");
+    	System.out.println("Introduce la matricula");
+    	nuevo.setMatricula(teclado.lecturaPalabra());
+    	System.out.println("Introduce el Nombre ");
+    	nuevo.setNombre(teclado.lecturaPalabra());
+    	System.out.println("Introduce el genero ");
+    	nuevo.setGenero(teclado.lecturaPalabra());
+    	System.out.println("Introduce el Edad ");
+    	nuevo.setEdad(teclado.lecturaEntero());
+    	System.out.println("Introduce el Carrera ");
+    	nuevo.setCarrera(teclado.lecturaPalabra());
+       
+       oper.registrar(listaAlumnos,nuevo);
+		
+	}
+public void registroAlumnosQueSonAyudantes(){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Alumnos
+	
+	Ayudante nuevo = new Ayudante();//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudante es una subclase de alumno 
+	
+	System.out.println("Registro de un nuevo Ayudante");
+	System.out.println("Introduce la matricula");
+	nuevo.setMatricula(teclado.lecturaPalabra());
+	System.out.println("Introduce el Nombre ");
+	nuevo.setNombre(teclado.lecturaPalabra());
+	System.out.println("Introduce el genero ");
+	nuevo.setGenero(teclado.lecturaPalabra());
+	System.out.println("Introduce el Edad ");
+	nuevo.setEdad(teclado.lecturaEntero());
+	System.out.println("Introduce el Carrera ");
+	nuevo.setCarrera(teclado.lecturaPalabra());
+	//atributos unico de Ayudante
+	System.out.println("Introduce el Numero esconomico del ayudante:");
+	nuevo.setNumEco(teclado.lecturaPalabra());
+      
+   oper.registrar(listaAlumnos,nuevo);//lo diviertido es que lo guardamos en la misma lista de Alumnos OWO 
+	
+}
+
+
+
+
+	
 }
