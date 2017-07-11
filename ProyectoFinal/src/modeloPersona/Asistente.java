@@ -21,4 +21,5 @@ public class Asistente extends Empleado
 	public void setBase(boolean base) {
 		this.base = base;
 	}
+	
 }
