@@ -13,7 +13,7 @@ import modeloPersona.Profesor;
 import modeloPersona.Visitante;
 
 public class Menu {
-	int opcion,subOpcion,terOpcion,subParaAlumno,subParaEmpelados,subParaVisitantes;
+	int opcion,subOpcion,terOpcion,subParaAlumno,subParaEmpelados;
 	
 	List <Alumno> listaAlumnos = new LinkedList<Alumno>();
 	List <Empleado> listaEmpleados = new LinkedList<Empleado>();
@@ -66,34 +66,43 @@ public class Menu {
 									}else if(subParaEmpelados==3){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
 										registroEmpeladosQueSonProfesores();
 									}else if(subParaEmpelados==4){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
-										registroEmpeladosQueSonAsistente();
+										registroAlumnosQueSonAyudantes();
 									}
 									
 					}else if(subOpcion==3){
-						
+						System.out.println("Visitante no tiene SubMenu");
+						registroVisitantes();						
 					}
 		 		}while(subOpcion!=4);
-		    }else if (opcion==2){
+		 		
+		    }else if (opcion==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar 
+		    	do {
 		    	subOpciones();
 		 		System.out.println("Introduce la opcion: ");
 				subOpcion = teclado.lecturaEntero();
 				System.out.println("Opcion seleccionada : " + subOpcion );
 				
 			 	if(subOpcion==1){
-			 		System.out.println("Elige una opcion");
-					System.out.println("1. Por nombre");
-					System.out.println("2. Por matricula");
+			 		System.out.println("Eliminar Por . . . ");
+					System.out.println("1. Nombre");
+					System.out.println("2. Matricula");
 					System.out.println("3. Regresar");
 			 		System.out.println("Introduce la opcion: ");
 					terOpcion = teclado.lecturaEntero();
 					System.out.println("Opcion seleccionada : " + terOpcion );
 					
 					if(terOpcion==1){
-						System.out.println("Escribe el nombre del que deseas eliminar");
+						System.out.println("Escribe el nombre del que deseas eliminar: ");
 				 		String alu = teclado.lecturaPalabra();
 				 		oper.eliminarNombre(alu);
-					}
-			 	}
+					}else if(terOpcion==2) {
+						System.out.println("Escribe la matricula que deseas eliminar: ");
+				 		String alu = teclado.lecturaPalabra();
+				 		oper.eliminaPorMatricula(alu);					
+								}
+			 				}
+		    	}while(terOpcion!=3);
+		    	
 		    }else if (opcion==3){  
 		    }else if (opcion==4){   
 		    }else if (opcion==5){   
@@ -160,7 +169,7 @@ public void registroAlumnos() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 	}
 public void registroAlumnosQueSonAyudantes(){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro ayudantes
 	
-	Ayudante nuevo = new Ayudante();
+	Ayudante nuevo = new Ayudante();//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudante es una subclase de alumno 
 	
 	System.out.println("Registro de un nuevo Ayudante");
 	System.out.println("Introduce la matricula");
@@ -265,7 +274,26 @@ public void registroEmpeladosQueSonAsistente() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
 		
 	}
 
-
+public void registroVisitantes() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Visitante  
+	
+	Visitante nuevo = new Visitante();
+	
+	System.out.println("Registro de un nuevo Visitante");
+	
+	nuevo.setId(teclado.lecturaPalabra());
+	System.out.println("Introduce el Nombre: ");
+	nuevo.setNombre(teclado.lecturaPalabra());
+	System.out.println("Introduce el Genero: ");
+	nuevo.setGenero(teclado.lecturaPalabra());
+	System.out.println("Introduce el Edad: ");
+	nuevo.setEdad(teclado.lecturaEntero());
+	//atributos unico de Visitante
+	System.out.println("Introduce El ID: ");
+	nuevo.setId(teclado.lecturaPalabra());
+	
+	operV.registrar(listaVisitantes, nuevo);
+	
+	}
 
 	
 }
