@@ -12,7 +12,7 @@ public class OperacionesAlumno extends Operaciones<Alumno>{
 		while (iterador.hasNext()){
 			Alumno e = iterador.next();
 			if(((Persona) e).getNombre().equalsIgnoreCase(matricula)){
-				System.out.println("Visitante " + ((Persona) e).getNombre() + "con Matricula " + ((modeloPersona.Alumno) e).getMatricula() + "encontrado.");
+				System.out.println("Empleado " + ((Persona) e).getNombre() + "con Matricula " + ((modeloPersona.Alumno) e).getMatricula() + "encontrado.");
 				elemento = e;
 			}
 		}
