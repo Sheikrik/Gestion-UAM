@@ -29,6 +29,4 @@ public class Persona
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-
-	
 }
