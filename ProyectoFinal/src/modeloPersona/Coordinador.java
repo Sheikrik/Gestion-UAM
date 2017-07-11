@@ -13,4 +13,5 @@ public class Coordinador extends Profesor
 	public void setArea(String area) {
 		this.area = area;
 	}
+	
 }
