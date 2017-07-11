@@ -28,7 +28,6 @@ public abstract class Operaciones<E> {
 	
 	public Persona busquedaNombre(String parametro){
 		Persona elemento = null;
-		
 		Iterator<E> iterador = lista.iterator();
 		
 		while (iterador.hasNext())
