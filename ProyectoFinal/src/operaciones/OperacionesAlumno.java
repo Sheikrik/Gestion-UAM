@@ -1,7 +1,7 @@
 package operaciones;
 
 import java.util.Iterator;
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.List;
 
 import modeloPersona.Alumno;
@@ -83,7 +83,7 @@ public class OperacionesAlumno extends Operaciones<Alumno>{
 			System.out.println( "Genero    :  " + e.getGenero());
 			System.out.println( "Matricula :  " + e.getMatricula());
 			System.out.println( "Edad      :  " + e.getEdad());
-			if(((Ayudante) e).getNumEco() !=" ") {
+			if(((Ayudante) e).getNumEco() !=" ") {/////// aquí es donde esta el depapaye 
 			System.out.println( "No. Eco   :  " + ((Ayudante) e).getNumEco());
 			System.out.println( "**********************************" );
 			}else {
