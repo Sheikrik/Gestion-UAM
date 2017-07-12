@@ -1,5 +1,6 @@
 package operaciones;
 
+import java.lang.reflect.InvocationTargetException;
 //import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,9 +22,9 @@ public class Menu {
 	List <Visitante> listaVisitantes = new LinkedList<Visitante>();
 	
 	EntradaTeclado teclado = new EntradaTeclado();
-	Operaciones oper = new Operaciones();
+	Operaciones<Alumno> operAl = new Operaciones<Alumno>();
 	
-	public void menu(){
+	public void menu() throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
 		do {
 			opciones();
 			System.out.println("Introduce la opcion: ");
@@ -95,6 +96,7 @@ public class Menu {
 					if(terOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar alumno por nombre
 						System.out.println("Escribe el nombre del que deseas eliminar: ");
 				 		String alu = teclado.lecturaPalabra();
+				 		operAl.eliminar(listaAlumnos,"Alumno","getNombre",alu);
 					}else if(terOpcion==2) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar alumno por matricula
 						System.out.println("Escribe la matricula que deseas eliminar: ");
 				 		String alu = teclado.lecturaPalabra();				
@@ -301,23 +303,23 @@ public class Menu {
 		System.out.println("3. Profesor");
 		System.out.println("4. Asistente");
 	}
-public void registroAlumnos() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Alumnos
-		
-		Alumno nuevo = new Alumno();
-		
-    	System.out.println("Registro de un nuevo Alumno");
-    	System.out.println("Introduce la matricula");
-    	nuevo.setMatricula(teclado.lecturaPalabra());
-    	System.out.println("Introduce el Nombre ");
-    	nuevo.setNombre(teclado.lecturaPalabra());
-    	System.out.println("Introduce el genero ");
-    	nuevo.setGenero(teclado.lecturaPalabra());
-    	System.out.println("Introduce el Edad ");
-    	nuevo.setEdad(teclado.lecturaEntero());
-    	System.out.println("Introduce el Carrera ");
-    	nuevo.setCarrera(teclado.lecturaPalabra());
-       
-       oper.registrar(listaAlumnos,nuevo);
+	public void registroAlumnos() {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro Alumnos
+			
+			Alumno nuevo = new Alumno();
+			
+	    	System.out.println("Registro de un nuevo Alumno");
+	    	System.out.println("Introduce la matricula");
+	    	nuevo.setMatricula(teclado.lecturaPalabra());
+	    	System.out.println("Introduce el Nombre ");
+	    	nuevo.setNombre(teclado.lecturaPalabra());
+	    	System.out.println("Introduce el genero ");
+	    	nuevo.setGenero(teclado.lecturaPalabra());
+	    	System.out.println("Introduce el Edad ");
+	    	nuevo.setEdad(teclado.lecturaEntero());
+	    	System.out.println("Introduce el Carrera ");
+	    	nuevo.setCarrera(teclado.lecturaPalabra());
+	       
+	       operAl.registrar(listaAlumnos,nuevo);
 		
 	}
 public void registroAlumnosQueSonAyudantes(){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Registro ayudantes
@@ -339,7 +341,7 @@ public void registroAlumnosQueSonAyudantes(){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 	System.out.println("Introduce el Numero esconomico del ayudante:");
 	nuevo.setNumEco(teclado.lecturaPalabra());
       
-   oper.registrar(listaAlumnos,nuevo);//lo diviertido es que lo guardamos en la misma lista de Alumnos OWO 
+   //oper.registrar(listaAlumnos,nuevo);//lo diviertido es que lo guardamos en la misma lista de Alumnos OWO 
 	
 }
 
