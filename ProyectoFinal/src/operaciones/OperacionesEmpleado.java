@@ -2,6 +2,8 @@ package operaciones;
 
 import java.util.Iterator;
 import java.util.List;
+
+
 import modeloPersona.Empleado;
 
 
@@ -34,6 +36,24 @@ public class OperacionesEmpleado extends Operaciones<Empleado>{
 				break;
 			}
 		}
+	}
+	
+	public void imprimeLista(List<Empleado> lista){
+
+		Iterator<Empleado> iterador = lista.iterator();
+		System.out.println("--LinkedList---");
+	 	//recorremos y mostramos la lista
+		while(iterador.hasNext())
+		{
+			Empleado e = iterador.next();
+			System.out.println( "Nombre    :  " + e.getNombre());
+			System.out.println( "Genero    :  " + e.getGenero());
+			System.out.println( "Matricula :  " + e.getNumEco());
+			System.out.println( "Edad      :  " + e.getEdad());
+						
+			System.out.println( "**********************************" );
+		}
+	
 	}
 
 	@Override
