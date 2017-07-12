@@ -228,8 +228,37 @@ public class Menu {
 			    
 			    }while(terOpcion!=3);
 		    	
-		    }else if (opcion==4){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Actualizar
-		    	
+		    }else if (opcion==4){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Actualizar (lo voy a hacer como si fue un registro de nuevo)
+		    	do{
+			 		subOpciones();
+			 		System.out.println("Introduce la opcion: ");
+					subOpcion = teclado.lecturaEntero();
+					System.out.println("Opcion seleccionada : " + subOpcion );
+					
+					if(subOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Sub menu de los tipos de alumnos 
+							subOpcionesAlumno();
+							System.out.println("Introduce la opcion: ");
+							subParaAlumno = teclado.lecturaEntero();
+							System.out.println("Opcion seleccionada : " + subParaAlumno );
+										if(subParaAlumno==1) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Alumnos 
+											System.out.println("Escribe la matricula: ");
+									 		String alu = teclado.lecturaPalabra();
+									 		Alumno a = oper.buscarMatricula(alu);//lo busco por matricula
+									 		//oper.eliminaPorMatricula(alu);// lo deberia eliminar ??? O_O pues si, no ? si de todas maneras lo tengo que hacer otra ves de nuevo o_o
+									 		actualizarAlumnos(a);//lo "actualizo" <--- supuestamente aquí  ._. wey ¡ 
+									 		oper.registrar(listaAlumnos,actualizarAlumnos(oper.buscarMatricula(alu)));//lo agrego a la lista, otra ves
+									 		
+										}else if(subParaAlumno==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
+											registroAlumnosQueSonAyudantes();											
+										}							
+					
+					}else if(subOpcion==2){
+						
+									
+					}else if(subOpcion==3){
+											
+					}
+		 		}while(subOpcion!=4);
 		    	
 		    }else if (opcion==5){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Imprimir   
 		    	do{
@@ -242,11 +271,11 @@ public class Menu {
 							oper.imprimeLista(listaAlumnos);
 							
 					}else if(subOpcion==2){
-						subMenuEmpleado();
+							operE.imprimeLista(listaEmpleados);
 						
 					}else if(subOpcion==3){
-						
-						registroVisitantes();						
+							operV.imprimeLista(listaVisitantes);
+							
 					}
 		 		}while(subOpcion!=4);
 		    }else if (opcion==6){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Cargar archivos   
@@ -445,7 +474,23 @@ public void queListaQUieres(){
 	System.out.println("4. Regresar");
 }
 
-
+public Alumno actualizarAlumnos(Alumno elemento) {//.-.-.-.-.-.-.-.-.-PRUEBA DE LA ACTUALIZACION 
+		
+	System.out.println("Actualizar Alumno");
+	System.out.println("Introduce la nueva matricula");
+	elemento.setMatricula(teclado.lecturaPalabra());
+	System.out.println("Introduce el nuevo  Nombre ");
+	elemento.setNombre(teclado.lecturaPalabra());
+	System.out.println("Introduce el nuevo genero ");
+	elemento.setGenero(teclado.lecturaPalabra());
+	System.out.println("Introduce la nueva Edad ");
+	elemento.setEdad(teclado.lecturaEntero());
+	System.out.println("Introduce la nueva Carrera ");
+	elemento.setCarrera(teclado.lecturaPalabra());
+   
+   return elemento;
+	
+}
 
 
 
