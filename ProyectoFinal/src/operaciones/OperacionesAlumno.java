@@ -1,12 +1,14 @@
 package operaciones;
 
 import java.util.Iterator;
+import java.util.List;
+
 import modeloPersona.Alumno;
 import modeloPersona.Persona;
 
 public class OperacionesAlumno extends Operaciones<Alumno>{
 	
-	public Alumno buscarMatricula(String matricula){
+	public Alumno buscarMatricula(List<Alumno> lista,String matricula){
 		Alumno elemento = null;
 		Iterator<Alumno> iterador = lista.iterator();
 		
@@ -20,7 +22,7 @@ public class OperacionesAlumno extends Operaciones<Alumno>{
 		return elemento;
 	}
 	
-	public void eliminaPorMatricula(String matricula){
+	public void eliminaPorMatricula(List<Alumno> lista,String matricula){
 		Iterator<Alumno> iterador = lista.iterator();
 		
 		while (iterador.hasNext()){
@@ -33,17 +35,5 @@ public class OperacionesAlumno extends Operaciones<Alumno>{
 				break;
 			}
 		}
-	}
-
-	@Override
-	public void imprimeLista() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actualizacion(String parametro) {
-		// TODO Auto-generated method stub
-		
 	}
 }

@@ -1,12 +1,13 @@
 package operaciones;
 
 import java.util.Iterator;
+import java.util.List;
+
 import modeloPersona.Visitante;
 
 public class OperacionesVisitante extends Operaciones<Visitante>{
-	public Visitante buscarID(String id){
+	public Visitante buscarID(List<Visitante> lista,String id){
 		Visitante elemento = null;
-		
 		Iterator<Visitante> iterador = lista.iterator();
 		
 		while (iterador.hasNext()){
@@ -19,7 +20,7 @@ public class OperacionesVisitante extends Operaciones<Visitante>{
 		return elemento;
 	}
 	
-	public void eliminaPorID(String id){
+	public void eliminaPorID(List<Visitante> lista,String id){
 		Iterator<Visitante> iterador = lista.iterator();
 		
 		while (iterador.hasNext()){
@@ -31,17 +32,5 @@ public class OperacionesVisitante extends Operaciones<Visitante>{
 				break;
 			}
 		}
-	}
-	
-	@Override
-	public void imprimeLista() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void actualizacion(String parametro) {
-		// TODO Auto-generated method stub
-		
 	}
 }

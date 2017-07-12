@@ -1,12 +1,13 @@
 package operaciones;
 
 import java.util.Iterator;
+import java.util.List;
 import modeloPersona.Empleado;
 
 
 public class OperacionesEmpleado extends Operaciones<Empleado>{
 	
-	public Empleado buscarNumEco(String numEco){
+	public Empleado buscarNumEco(List<Empleado> lista,String numEco){
 		Empleado elemento = null;
 		Iterator<Empleado> iterador = lista.iterator();
 		
@@ -20,7 +21,7 @@ public class OperacionesEmpleado extends Operaciones<Empleado>{
 		return elemento;
 	}
 	
-	public void eliminaPorNumeroEconomico(String numEco){
+	public void eliminaPorNumeroEconomico(List<Empleado> lista,String numEco){
 		Iterator<Empleado> iterador = lista.iterator();
 		
 		while (iterador.hasNext()){
@@ -33,17 +34,5 @@ public class OperacionesEmpleado extends Operaciones<Empleado>{
 				break;
 			}
 		}
-	}
-
-	@Override
-	public void imprimeLista() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actualizacion(String parametro) {
-		// TODO Auto-generated method stub
-		
 	}
 }
