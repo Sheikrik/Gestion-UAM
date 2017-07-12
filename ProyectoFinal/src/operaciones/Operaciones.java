@@ -1,55 +1,45 @@
 package operaciones;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
+import modeloPersona.Persona;
 
-public class Operaciones<E> {
+public abstract class Operaciones<E> {
 	
 	public void registrar(List<E> lista,E elemento){
 		lista.add(elemento);
 		System.out.println("Elemento registrado");
 	}
 	
-	public void eliminar(List<E> lista,String nomClase,String nomMetodo,String comparador) throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
+	public void eliminarNombre(List<E> lista,String nombre){
 		Iterator<E> iterador = lista.iterator();
-		Method metodo = pasoMetodo(nomClase,nomMetodo);
-		boolean estado = false;
 		
-		while (iterador.hasNext() || estado==true){
+		while (iterador.hasNext()){
 			E e = iterador.next();
-			String parametro = (String) metodo.invoke(e,null);
-			
-			if(parametro.equalsIgnoreCase(comparador)){
+			if(((Persona) e).getNombre().equalsIgnoreCase(nombre)){
 				lista.remove(e);
-				System.out.println("Se ha eliminado a " + parametro);
-				estado = true;
+				System.out.println("Se ha eliminado a " + ((Persona) e).getNombre());
+				break;
 			}
 		}
 	}
 	
-	public E busqueda(List<E> lista,String nomClase,String nomMetodo,String comparador) throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
+	public Persona busquedaNombre(List<E> lista,String parametro){
+		Persona elemento = null;
 		Iterator<E> iterador = lista.iterator();
-		Method metodo = pasoMetodo(nomClase,nomMetodo);
-		E elemento = null;
 		
-		while (iterador.hasNext()){
+		while (iterador.hasNext())
+		{
 			E e = iterador.next();
-			String parametro = (String) metodo.invoke(e,null);
-			
-			if(parametro.equalsIgnoreCase(comparador)){
-				System.out.println("Persona encontrada " +  parametro);
-				elemento = e;
+			if(((Persona) e).getNombre().equalsIgnoreCase(parametro))
+			{
+				System.out.println("Persona encontrada " + ((Persona) e).getNombre());
+				elemento = (Persona) e;
 			}
 		}
 		return elemento;
 	}
 	
-	private Method pasoMetodo(String clase,String metodo) throws ClassNotFoundException, NoSuchMethodException, SecurityException{
-		Class nomClase = Class.forName(clase);
-		Method nomMetodo = nomClase.getMethod(metodo, null);
-		
-		return nomMetodo;
-	}
+	public abstract void imprimeLista();	
+	public abstract void actualizacion(String parametro);
 }
