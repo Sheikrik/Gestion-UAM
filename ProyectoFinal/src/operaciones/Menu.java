@@ -48,7 +48,7 @@ public class Menu {
 							subParaAlumno = teclado.lecturaEntero();
 							System.out.println("Opcion seleccionada : " + subParaAlumno );
 										if(subParaAlumno==1) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Alumnos 
-											registroAlumnos();											
+											registroAlumnos();
 										}else if(subParaAlumno==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
 											registroAlumnosQueSonAyudantes();											
 										}
@@ -91,7 +91,7 @@ public class Menu {
 					if(terOpcion==1){
 						System.out.println("Escribe el nombre del que deseas eliminar");
 				 		String alu = teclado.lecturaPalabra();
-				 		oper.eliminarNombre(alu);
+				 		//oper.eliminarNombre(alu);
 					}
 			 	}
 		    }else if (opcion==3){  
