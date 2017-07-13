@@ -7,7 +7,7 @@ import modeloPersona.Alumno;
 public class OperacionesAlumno extends Operaciones<Alumno>{	
 	private Alumno ejemplar;
 	
-	public Alumno buscarPoMatricula(List<Alumno> lista,String matricula){
+	public Alumno buscarPorMatricula(List<Alumno> lista,String matricula){
 		Alumno elemento = null;
 		Iterator<Alumno> iterador = lista.iterator();
 		
@@ -45,11 +45,5 @@ public class OperacionesAlumno extends Operaciones<Alumno>{
 								"\nCarrera: " + ejemplar.getCarrera() +
 								"\nEdad: " + ejemplar.getEdad());
 		}
-	}
-
-	@Override
-	public void actualizacion(String parametro) {
-		// TODO Auto-generated method stub
-		
 	}
 }

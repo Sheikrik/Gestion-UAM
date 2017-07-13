@@ -46,10 +46,4 @@ public class OperacionesAsistente extends Operaciones<Asistente>{
 								"\n*******************************************");
 		}
 	}
-
-	@Override
-	public void actualizacion(String parametro) {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -47,11 +47,4 @@ public class OperacionesJefe extends Operaciones<Jefe>{
 								"\n*******************************************");
 		}
 	}
-	
-	@Override
-	public void actualizacion(String parametro) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

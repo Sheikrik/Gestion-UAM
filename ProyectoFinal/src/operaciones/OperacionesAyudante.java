@@ -7,7 +7,7 @@ import modeloPersona.Ayudante;
 public class OperacionesAyudante extends Operaciones<Ayudante>{
 	private Ayudante ejemplar;
 	
-	public Ayudante buscarPoMatricula(List<Ayudante> lista,String matricula){
+	public Ayudante buscarPorMatricula(List<Ayudante> lista,String matricula){
 		Ayudante elemento = null;
 		Iterator<Ayudante> iterador = lista.iterator();
 		
@@ -75,11 +75,5 @@ public class OperacionesAyudante extends Operaciones<Ayudante>{
 								"Numero economico: " + ejemplar.getNumEco() +
 								"\n*******************************************");
 		}
-	}
-
-	@Override
-	public void actualizacion(String parametro) {
-		// TODO Auto-generated method stub
-		
 	}
 }

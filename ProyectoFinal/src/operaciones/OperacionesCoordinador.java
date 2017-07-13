@@ -47,11 +47,4 @@ public class OperacionesCoordinador extends Operaciones<Coordinador>{
 								"\n*******************************************");
 		}
 	}
-	
-	@Override
-	public void actualizacion(String parametro) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

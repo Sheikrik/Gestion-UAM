@@ -29,7 +29,7 @@ public abstract class Operaciones<E> {
 		}
 	}
 	
-	public Persona busquedaPorNombre(List<E> lista,String parametro){
+	public Persona buscarPorNombre(List<E> lista,String parametro){
 		Persona elemento = null;
 		Iterator<E> iterador = lista.iterator();
 		
@@ -55,6 +55,4 @@ public abstract class Operaciones<E> {
 								"\nEdad: " + ejemCast.getEdad());
 		}
 	}
-	
-	public abstract void actualizacion(String parametro);
 }
