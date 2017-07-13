@@ -19,13 +19,6 @@ public class Menu {
 	List <Jefe> listaJefes = new LinkedList<Jefe>();
 	List <Visitante> listaVisitantes = new LinkedList<Visitante>();
 	
-	PersistenciaLista<Alumno> perAl = new PersistenciaLista<Alumno>();
-	PersistenciaLista<Ayudante> perAy = new PersistenciaLista<Ayudante>();
-	PersistenciaLista<Asistente> perAs = new PersistenciaLista<Asistente>();
-	PersistenciaLista<Coordinador> perC = new PersistenciaLista<Coordinador>();
-	PersistenciaLista<Jefe> perJ = new PersistenciaLista<Jefe>();
-	PersistenciaLista<Visitante> perV = new PersistenciaLista<Visitante>();
-	
 	OperacionesAlumno operAl = new OperacionesAlumno();
 	OperacionesAyudante operAy = new OperacionesAyudante();
 	OperacionesAsistente operAs = new OperacionesAsistente();
@@ -205,7 +198,6 @@ public class Menu {
 		Visitante nuevo = new Visitante();
 		
 		System.out.println("Registro de un nuevo Visitante");
-		nuevo.setId(teclado.lecturaPalabra());
 		System.out.println("Introduce el Nombre: ");
 		nuevo.setNombre(teclado.lecturaPalabra());
 		System.out.println("Introduce el Genero: ");
@@ -223,17 +215,17 @@ public class Menu {
 		do{
     		subOpciones();
     		if(subOpcion==1){
-    			perAl.listaSerializada(listaAlumnos,"Alumnos.ser");
+    			operAl.listaSerializada(listaAlumnos,"Alumnos.ser");
 			}else if(subOpcion==2){
-    			perAy.listaSerializada(listaAyudantes,"Ayudantes.ser");
+    			operAy.listaSerializada(listaAyudantes,"Ayudantes.ser");
 			}else if(subOpcion==3){
-    			perAs.listaSerializada(listaAsistentes,"Asistentes.ser");
+    			operAs.listaSerializada(listaAsistentes,"Asistentes.ser");
 			}else if(subOpcion==4){
-    			perC.listaSerializada(listaCoordinadores,"Coordinadores.ser");
+    			operC.listaSerializada(listaCoordinadores,"Coordinadores.ser");
 			}else if(subOpcion==5){
-    			perJ.listaSerializada(listaJefes,"Jefes.ser");
+    			operJ.listaSerializada(listaJefes,"Jefes.ser");
 			}else if(subOpcion==6){
-    			perV.listaSerializada(listaVisitantes,"Visitantes.ser");
+    			operV.listaSerializada(listaVisitantes,"Visitantes.ser");
 			}else if(subOpcion==7){
 				System.out.println("Regresando...");					
 			}else{
@@ -246,17 +238,17 @@ public class Menu {
 		do{
     		subOpciones();
     		if(subOpcion==1){
-    			operAl.imprimeLista(perAl.listaDeserializada("Alumnos.ser"));
+    			operAl.imprimeLista(operAl.listaDeserializada("Alumnos.ser"));
 			}else if(subOpcion==2){
-				operAy.imprimeLista(perAy.listaDeserializada("Ayudantes.ser"));
+				operAy.imprimeLista(operAy.listaDeserializada("Ayudantes.ser"));
 			}else if(subOpcion==3){
-				operAs.imprimeLista(perAs.listaDeserializada("Asistentes.ser"));
+				operAs.imprimeLista(operAs.listaDeserializada("Asistentes.ser"));
 			}else if(subOpcion==4){
-				operC.imprimeLista(perC.listaDeserializada("Coordinadores.ser"));
+				operC.imprimeLista(operC.listaDeserializada("Coordinadores.ser"));
 			}else if(subOpcion==5){
-				operJ.imprimeLista(perJ.listaDeserializada("Jefes.ser"));
+				operJ.imprimeLista(operJ.listaDeserializada("Jefes.ser"));
 			}else if(subOpcion==6){
-				operV.imprimeLista(perV.listaDeserializada("Visitantes.ser"));
+				operV.imprimeLista(operV.listaDeserializada("Visitantes.ser"));
 			}else if(subOpcion==7){
 				System.out.println("Regresando...");					
 			}else{
