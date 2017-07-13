@@ -1,8 +1,7 @@
 package modeloPersona;
 
-
-public class Profesor extends Empleado 
-{
+@SuppressWarnings("serial")
+public class Profesor extends Empleado {
 	private String gradAcademico;
 
 

@@ -1,9 +1,7 @@
 package modeloPersona;
 
-//import modeloHorario.Horario;
-
-public class Ayudante extends Alumno implements Auxiliar
-{
+@SuppressWarnings("serial")
+public class Ayudante extends Alumno implements Auxiliar{
 	private String numEco;
 
 

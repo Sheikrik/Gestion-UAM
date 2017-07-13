@@ -1,8 +1,7 @@
 package modeloPersona;
 
-
-public class Empleado extends Persona implements Auxiliar
-{
+@SuppressWarnings("serial")
+public class Empleado extends Persona implements Auxiliar{
 	private String numEco;
 
 	@Override

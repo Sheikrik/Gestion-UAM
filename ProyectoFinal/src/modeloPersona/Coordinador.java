@@ -1,8 +1,7 @@
 package modeloPersona;
 
-
-public class Coordinador extends Profesor 
-{
+@SuppressWarnings("serial")
+public class Coordinador extends Profesor {
 	private String area;
 
 	

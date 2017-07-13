@@ -2,6 +2,7 @@ package modeloPersona;
 
 import modeloHorario.Horario;
 
+@SuppressWarnings("serial")
 public class Alumno extends Persona 
 {
 	private String matricula;

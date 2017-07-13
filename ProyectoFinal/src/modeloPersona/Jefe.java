@@ -1,8 +1,7 @@
 package modeloPersona;
 
-
-public class Jefe extends Profesor 
-{
+@SuppressWarnings("serial")
+public class Jefe extends Profesor {
 	private String cargo;
 
 	public String getCargo() {

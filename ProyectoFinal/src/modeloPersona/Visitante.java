@@ -1,8 +1,7 @@
 package modeloPersona;
 
-
-public class Visitante extends Persona 
-{
+@SuppressWarnings("serial")
+public class Visitante extends Persona {
 	private String id;
 
 	

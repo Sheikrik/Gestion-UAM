@@ -1,7 +1,7 @@
 package modeloPersona;
 
-public class Asistente extends Empleado 
-{
+@SuppressWarnings("serial")
+public class Asistente extends Empleado {
 	private boolean confianza;
 	
 
