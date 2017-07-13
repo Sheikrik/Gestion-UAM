@@ -2,11 +2,17 @@ package operaciones;
 
 import java.util.LinkedList;
 import java.util.List;
+
+/*import modeloHorario.Horario;
+import modeloHorario.Materia;
+import modeloHorario.Salon;
+import modeloPersona.Profesor;*/
 import modeloPersona.Alumno;
 import modeloPersona.Asistente;
 import modeloPersona.Ayudante;
 import modeloPersona.Coordinador;
 import modeloPersona.Jefe;
+
 import modeloPersona.Visitante;
 
 public class Menu {
@@ -105,10 +111,13 @@ public class Menu {
     	nuevo.setMatricula(teclado.lecturaPalabra());
     	System.out.println("Introduce el Carrera ");
     	nuevo.setCarrera(teclado.lecturaPalabra());
+    	//Horario horario[] = registroHorario();
+    	//nuevo.setHorario(horario);
        
-       operAl.registrar(listaAlumnos,nuevo);
+    	operAl.registrar(listaAlumnos,nuevo);
 		
 	}
+	
 	private void registroAyudantes(){
 	
 		Ayudante nuevo = new Ayudante(); 
@@ -126,9 +135,48 @@ public class Menu {
 		nuevo.setCarrera(teclado.lecturaPalabra());
 		System.out.println("Introduce el Numero esconomico: ");
 		nuevo.setNumEco(teclado.lecturaPalabra());
+		//Horario horario[] = registroHorario();
+    	//nuevo.setHorario(horario);
 		
 		operAy.registrar(listaAyudantes,nuevo); 
 	}
+	
+	/*private Horario[] registroHorario(){
+		System.out.println("Numero de materias ");
+		int numMaterias = teclado.lecturaEntero();
+		
+		Horario hor[] = new Horario[numMaterias];
+		
+		for(int i=0;i<numMaterias;i++){
+			System.out.println("Hora de inicio ");
+			hor[i].setHoraInicio(teclado.lecturaPalabra());
+			System.out.println("Hora de fin ");
+			hor[i].setHoraFin(teclado.lecturaPalabra());
+			System.out.println("Dias ");
+			hor[i].setDias(teclado.lecturaPalabra());
+			
+			Materia mat = new Materia();
+			
+			System.out.println("Materia ");
+			mat.setNombreMateria(teclado.lecturaPalabra());
+			System.out.println("Creditos ");
+			mat.setCreditos(teclado.lecturaEntero());
+			hor[i].setMat(mat);
+			
+			Salon sal = new Salon();
+			
+			System.out.println("Salon ");
+			sal.setGrupo(teclado.lecturaPalabra());
+			hor[i].setAula(sal);
+			
+			Profesor prof = new Profesor();
+			
+			System.out.println("Profesor ");
+			prof.setNombre(teclado.lecturaPalabra());
+			hor[i].setProf(prof);
+		}
+		return hor;
+	}*/
 
 	private void registroJefes(){
 	

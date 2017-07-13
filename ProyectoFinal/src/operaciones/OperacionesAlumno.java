@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Iterator;
 import java.util.List;
+//import modeloHorario.Horario;
 import modeloPersona.Alumno;
 
 public class OperacionesAlumno extends Operaciones<Alumno>{	
@@ -80,8 +81,22 @@ public class OperacionesAlumno extends Operaciones<Alumno>{
 								"\nGenero: " + ejemplar.getGenero() +
 								"\nEdad: " + ejemplar.getEdad() +
 								"\nMatricula: " + ejemplar.getMatricula() +
-								"\nCarrera: " + ejemplar.getCarrera() +
-								"\n*******************************************");
+								"\nCarrera: " + ejemplar.getCarrera() /*+
+								"\n\nHORARIO"*/);
+			
+			/*int tamano = ejemplar.getHorario().length;
+			Horario horario[] = ejemplar.getHorario();
+			
+			for(int i=0;i<tamano;i++){
+				System.out.println("\nMateria: " + horario[i].getMat().getNombreMateria() +
+									"\nCreditos: " + horario[i].getMat().getCreditos() +
+									"\nHora de inicio: " + horario[i].getHoraInicio() +
+									"\nHora de fin: " + horario[i].getHoraFin() +
+									"\nDias: " + horario[i].getDias() +
+									"\nSalon: " + horario[i].getAula().getGrupo() +
+									"\nProfesor: " + horario[i].getProf().getNombre() +
+									"\n*******************************************");
+			}*/
 		}
 	}
 	

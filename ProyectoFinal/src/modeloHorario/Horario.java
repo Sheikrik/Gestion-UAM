@@ -1,24 +1,17 @@
 package modeloHorario;
 
+import java.io.Serializable;
+
 import modeloPersona.Profesor;
 
-public class Horario {
+@SuppressWarnings("serial")
+public class Horario implements Serializable{
     private String horaInicio;
     private String horaFin;
     private String dias;
     private Materia mat;
     private Salon aula;
     private Profesor prof;
-
-    public Horario(String horaInicio, String horaFin, String dias, Materia mat, Salon aula, Profesor prof) {
-		super();
-		this.horaInicio = horaInicio;
-		this.horaFin = horaFin;
-		this.dias = dias;
-		this.mat = mat;
-		this.aula = aula;
-		this.prof = prof;
-	}
 
 	public Profesor getProf() {
 		return prof;

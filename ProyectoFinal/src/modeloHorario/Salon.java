@@ -1,11 +1,10 @@
 package modeloHorario;
 
-public class Salon {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Salon implements Serializable{
 	private String grupo;
-   
-    public Salon(String grupo) {
-        this.grupo = grupo;
-    }
     
     public String getGrupo() {
         return grupo;

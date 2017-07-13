@@ -1,13 +1,11 @@
 package modeloHorario;
 
-public class Materia {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Materia implements Serializable{
    private String nombreMateria;
    private int creditos;
-   
-   public Materia(String nombreMateria,  int creditos) {
-       this.nombreMateria = nombreMateria;
-       this.creditos = creditos;
-   }
 
    public String getNombreMateria() {
        return nombreMateria;
