@@ -2,21 +2,21 @@ package operaciones;
 
 import java.util.Iterator;
 import java.util.List;
-
-
 import modeloPersona.Visitante;
 
 public class OperacionesVisitante extends Operaciones<Visitante>{
-	public Visitante buscarID(List<Visitante> lista,String id){
+	private Visitante ejemplar;
+	
+	public Visitante buscarPorID(List<Visitante> lista,String id){
 		Visitante elemento = null;
-		
 		Iterator<Visitante> iterador = lista.iterator();
 		
 		while (iterador.hasNext()){
-			Visitante e = iterador.next();
-			if(e.getNombre().equalsIgnoreCase(id)){
-				System.out.println("Visitante " + e.getNombre() + "con ID " + e.getId() + "encontrado.");
-				elemento = e;
+			ejemplar = iterador.next();
+			
+			if(ejemplar.getId().equalsIgnoreCase(id)){
+				System.out.println("Visitante " + ejemplar.getNombre() + " con ID " + ejemplar.getId() + "encontrado.");
+				elemento = ejemplar;
 			}
 		}
 		return elemento;
@@ -24,41 +24,27 @@ public class OperacionesVisitante extends Operaciones<Visitante>{
 	
 	public void eliminaPorID(List<Visitante> lista,String id){
 		Iterator<Visitante> iterador = lista.iterator();
+		boolean estado = false;
 		
-		while (iterador.hasNext()){
-			Visitante e = iterador.next();
-			if(e.getId().equalsIgnoreCase(id)){
-				System.out.println("Visitante encontrado "+ e.getId());
-				lista.remove(e);
-				System.out.println("El visitante ha sido eliminado");
-				break;
+		while (iterador.hasNext() || estado==true){
+			ejemplar = iterador.next();
+			
+			if(ejemplar.getId().equalsIgnoreCase(id)){
+				lista.remove(ejemplar);
+				System.out.println("El visitante con ID " + ejemplar.getId() + " ha sido eliminado");
+				estado = true;
 			}
 		}
 	}
 	
 	public void imprimeLista(List<Visitante> lista){
-
 		Iterator<Visitante> iterador = lista.iterator();
-		System.out.println("--LinkedList---");
-	 	//recorremos y mostramos la lista
-		while(iterador.hasNext())
-		{
-			Visitante e = iterador.next();
-			System.out.println( "Nombre    :  " + e.getNombre());
-			System.out.println( "Genero    :  " + e.getGenero());
-			System.out.println( "Matricula :  " + e.getId());
-			System.out.println( "Edad      :  " + e.getEdad());
-						
-			System.out.println( "**********************************" );
+
+		while(iterador.hasNext()){
+			ejemplar = iterador.next();
+			System.out.println( "ID: " + ejemplar.getId() +
+								"\n*******************************************");
 		}
-	
-	}
-	
-	
-	@Override
-	public void imprimeLista() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
