@@ -83,14 +83,14 @@ public class OperacionesAlumno extends Operaciones<Alumno>{
 			System.out.println( "Genero    :  " + e.getGenero());
 			System.out.println( "Matricula :  " + e.getMatricula());
 			System.out.println( "Edad      :  " + e.getEdad());
-			/*if(((Ayudante) e).getNumEco() != " ") {/////// aquí es donde esta el depapaye 
-			System.out.println( "No. Eco   :  " + ((Ayudante) e).getNumEco());
+			if(((Ayudante) e).getNumEco() != "" ) {/////// aquí es donde esta el despapaye 
+			System.out.println( "No. Eco   :  " + ((Ayudante) e).getNumEco());//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA¡ XDDDDDDDDDDDDDDDDD
 			System.out.println( "**********************************" );
-			}else {*/
+			}else {
 			System.out.println( "**********************************" );
 		}
 	}
-	//   }  este va con el if 
+	  } // este va con el if 
 	@Override
 	public void imprimeLista() {
 		// TODO Auto-generated method stub

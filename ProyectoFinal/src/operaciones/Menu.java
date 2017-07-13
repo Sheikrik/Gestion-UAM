@@ -60,17 +60,17 @@ public class Menu {
 						System.out.println("Introduce la opcion: ");
 						subParaEmpelados = teclado.lecturaEntero();
 						System.out.println("Opcion seleccionada : " + subParaEmpelados );
-									if(subParaEmpelados==1) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Alumnos 
+									if(subParaEmpelados==1) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Empleado que son profesores 
 										registroEmpeladosQueSonJefes();											
-									}else if(subParaEmpelados==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
+									}else if(subParaEmpelados==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Empleadoque son jefes  
 										registroEmpeladosQueSonCoordinadores();											
-									}else if(subParaEmpelados==3){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
+									}else if(subParaEmpelados==3){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Empleads que son coordinadores
 										registroEmpeladosQueSonProfesores();
-									}else if(subParaEmpelados==4){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
-										registroAlumnosQueSonAyudantes();
+									}else if(subParaEmpelados==4){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Empelados que son asistentes  
+										registroEmpeladosQueSonAsistente();
 									}
 									
-					}else if(subOpcion==3){
+					}else if(subOpcion==3){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Visitantes 
 						System.out.println("Visitante no tiene SubMenu");
 						registroVisitantes();						
 					}
@@ -97,15 +97,15 @@ public class Menu {
 					if(terOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar alumno por nombre
 						System.out.println("Escribe el nombre del que deseas eliminar: ");
 				 		String alu = teclado.lecturaPalabra();
-				 		oper.eliminarNombre(alu);
+				 		oper.eliminarNombre(listaAlumnos,alu);
 					}else if(terOpcion==2) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar alumno por matricula
 						System.out.println("Escribe la matricula que deseas eliminar: ");
 				 		String alu = teclado.lecturaPalabra();
-				 		oper.eliminaPorMatricula(alu);					
+				 		oper.eliminaPorMatricula(listaAlumnos,alu);					
 					}else if(terOpcion==3) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar alumno por numero economico
 						System.out.println("Escribe El numero economico del alumno que deseas eliminar : ");
 				 		String alu = teclado.lecturaPalabra();
-				 		oper.eliminaPorNoEconomico(alu);
+				 		oper.eliminaPorNoEconomico(listaAlumnos,alu);
 					}
 			 				   }while(terOpcion!=4);
 			 	}else if (subOpcion==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar Empleado
@@ -121,11 +121,11 @@ public class Menu {
 						if(terOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar Empleado por nombre
 							System.out.println("Escribe el nombre del empelado a eliminar: ");
 					 		String empl = teclado.lecturaPalabra();
-					 		operE.eliminarNombre(empl);
+					 		operE.eliminarNombre(listaEmpleados,empl);
 						}else if(terOpcion==2) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar Empleado por numero economico
 							System.out.println("Escribe el numero economico de empleado  liminar: ");
 					 		String empl = teclado.lecturaPalabra();
-					 		operE.eliminaPorNumeroEconomico(empl);
+					 		operE.eliminaPorNumeroEconomico(listaEmpleados,empl);
 						}
 				 				   }while(terOpcion!=3);
 			 	}else if (subOpcion==3){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar Visitante
@@ -141,11 +141,11 @@ public class Menu {
 						if(terOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar Visitante por nombre
 							System.out.println("Escribe el nombre del visintate que deseas eliminar: ");
 					 		String vis = teclado.lecturaPalabra();
-					 		operV.eliminarNombre(vis);
+					 		operV.eliminarNombre(listaVisitantes,vis);
 						}else if(terOpcion==2) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Eliminar Visitante por ID
 							System.out.println("Escribe el numero economico de Visitante  liminar: ");
 					 		String vis = teclado.lecturaPalabra();
-					 		operV.eliminaPorID(vis);
+					 		operV.eliminaPorID(listaVisitantes,vis);
 						}
 				 				   }while(terOpcion!=3);
 			 	}
@@ -173,15 +173,15 @@ public class Menu {
 						if(terOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Buscar alumno por nombre
 							System.out.println("Escribe el nombre del que deseas Buscar: ");
 					 		String alu = teclado.lecturaPalabra();
-					 		oper.busquedaNombre(alu);
+					 		oper.busquedaNombre(listaAlumnos,alu);
 						}else if(terOpcion==2) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Buscar alumno por matricula
 							System.out.println("Escribe la matricula que deseas Buscar: ");
 					 		String alu = teclado.lecturaPalabra();
-					 		oper.buscarMatricula(alu);					
+					 		oper.buscarMatricula(listaAlumnos,alu);					
 						}else if(terOpcion==3) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Buscar alumno por numero economico
 							System.out.println("Escribe El numero economico del alumno que deseas Buscar : ");
 					 		String alu = teclado.lecturaPalabra();
-					 		oper.buscarNoEconomico(alu);
+					 		oper.buscarNoEconomico(listaAlumnos,alu);
 						}
 				 				   }while(terOpcion!=4);
 				 	}else if (subOpcion==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Buscar Empleado
@@ -197,11 +197,11 @@ public class Menu {
 							if(terOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Buscar Empleado por nombre
 								System.out.println("Escribe el nombre del empleado que deseas Buscar: ");
 						 		String empl = teclado.lecturaPalabra();
-						 		operE.busquedaNombre(empl);
+						 		operE.busquedaNombre(listaEmpleados,empl);
 							}else if(terOpcion==2) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Buscar Empleado por numero economico
 								System.out.println("Escribe el numero economico del empleado a liminar: ");
 						 		String empl = teclado.lecturaPalabra();
-						 		operE.buscarNumEco(empl);
+						 		operE.buscarNumEco(listaEmpleados,empl);
 							}
 					 				   }while(terOpcion!=3);
 				 	}else if (subOpcion==3){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Buscar Visitante
@@ -217,11 +217,11 @@ public class Menu {
 							if(terOpcion==1){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Buscar Visitante por nombre
 								System.out.println("Escribe el nombre del visitante que deseas Buscar: ");
 						 		String vis = teclado.lecturaPalabra();
-						 		operV.busquedaNombre(vis);
+						 		operV.busquedaNombre(listaVisitantes,vis);
 							}else if(terOpcion==2) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Buscar Visitante por ID
 								System.out.println("Escribe el numero ID del visitante a eiminar: ");
 						 		String vis = teclado.lecturaPalabra();
-						 		operV.buscarID(vis);
+						 		operV.buscarID(listaVisitantes,vis);
 							}
 					 				   }while(terOpcion!=3);
 				 	}
@@ -241,19 +241,44 @@ public class Menu {
 							subParaAlumno = teclado.lecturaEntero();
 							System.out.println("Opcion seleccionada : " + subParaAlumno );
 										if(subParaAlumno==1) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Alumnos 
-											System.out.println("Escribe la matricula: ");
+											System.out.println("Escribe El NOMBRE DE LA PERSONA A LA QUE LE VAS A ACTUALIZAR SUS DATOS: ");
 									 		String alu = teclado.lecturaPalabra();
-									 		Alumno a = oper.buscarMatricula(alu);//lo busco por matricula
-									 		//oper.eliminaPorMatricula(alu);// lo deberia eliminar ??? O_O pues si, no ? si de todas maneras lo tengo que hacer otra ves de nuevo o_o
-									 		actualizarAlumnos(a);//lo "actualizo" <--- supuestamente aquí  ._. wey ¡ 
-									 		oper.registrar(listaAlumnos,actualizarAlumnos(oper.buscarMatricula(alu)));//lo agrego a la lista, otra ves
+									 		oper.eliminarNombre(listaAlumnos, alu);
+									 		registroAlumnos();
 									 		
 										}else if(subParaAlumno==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Ayudantes 
-											registroAlumnosQueSonAyudantes();											
+											System.out.println("Escribe El NOMBRE DE LA PERSONA A LA QUE LE VAS A ACTUALIZAR SUS DATOS: ");
+									 		String alu = teclado.lecturaPalabra();
+									 		oper.eliminarNombre(listaAlumnos, alu);
+									 		registroAlumnosQueSonAyudantes();									
 										}							
 					
 					}else if(subOpcion==2){
-						
+						subMenuEmpleado();
+						System.out.println("Introduce la opcion: ");
+						subParaEmpelados = teclado.lecturaEntero();
+						System.out.println("Opcion seleccionada : " + subParaEmpelados );
+									if(subParaEmpelados==1) {//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Empleado son profesores 
+										System.out.println("Escribe El NOMBRE DE LA PERSONA A LA QUE LE VAS A ACTUALIZAR SUS DATOS: ");
+								 		String alu = teclado.lecturaPalabra();
+								 		operE.eliminarNombre(listaEmpleados, alu);
+										registroEmpeladosQueSonProfesores();											
+									}else if(subParaEmpelados==2){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Empleadoque son jefes  
+										System.out.println("Escribe El NOMBRE DE LA PERSONA A LA QUE LE VAS A ACTUALIZAR SUS DATOS: ");
+								 		String alu = teclado.lecturaPalabra();
+								 		operE.eliminarNombre(listaEmpleados, alu);
+										registroEmpeladosQueSonJefes();										
+									}else if(subParaEmpelados==3){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Empleads que son coordinadores
+										System.out.println("Escribe El NOMBRE DE LA PERSONA A LA QUE LE VAS A ACTUALIZAR SUS DATOS: ");
+								 		String alu = teclado.lecturaPalabra();
+								 		operE.eliminarNombre(listaEmpleados, alu);
+										registroEmpeladosQueSonCoordinadores();	
+									}else if(subParaEmpelados==4){//.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-Empelados que son asistentes   
+										System.out.println("Escribe El NOMBRE DE LA PERSONA A LA QUE LE VAS A ACTUALIZAR SUS DATOS: ");
+								 		String alu = teclado.lecturaPalabra();
+								 		operE.eliminarNombre(listaEmpleados, alu);
+										registroEmpeladosQueSonAsistente();	
+									}
 									
 					}else if(subOpcion==3){
 											
@@ -472,24 +497,6 @@ public void queListaQUieres(){
 	System.out.println("2. Empleado");
 	System.out.println("3. Visitante");
 	System.out.println("4. Regresar");
-}
-
-public Alumno actualizarAlumnos(Alumno elemento) {//.-.-.-.-.-.-.-.-.-PRUEBA DE LA ACTUALIZACION 
-		
-	System.out.println("Actualizar Alumno");
-	System.out.println("Introduce la nueva matricula");
-	elemento.setMatricula(teclado.lecturaPalabra());
-	System.out.println("Introduce el nuevo  Nombre ");
-	elemento.setNombre(teclado.lecturaPalabra());
-	System.out.println("Introduce el nuevo genero ");
-	elemento.setGenero(teclado.lecturaPalabra());
-	System.out.println("Introduce la nueva Edad ");
-	elemento.setEdad(teclado.lecturaEntero());
-	System.out.println("Introduce la nueva Carrera ");
-	elemento.setCarrera(teclado.lecturaPalabra());
-   
-   return elemento;
-	
 }
 
 
